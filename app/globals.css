@@ -154,14 +154,13 @@ body{
 
 
 .popular-box{
-background-image: url("../public/images/popular-bg.png");
+background-image: url("/images/popular-bg.png");
 background-position: center;
-background-size: contain;
+background-size: cover;
 }
 
 .footer-box{
-  background-image: url("../public/images/footer-bg.png");
+  background-image: url("/images/footer-bg.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
 }

@@ -69,7 +69,7 @@ const footerList:footerListType[] = [
    ]
 
   return (
-    <section className="footer-box h-[314px] mt-10">
+    <section className="footer-box mt-10 w-full ">
         <div className="containers py-15 flex gap-[159px]">
          <div className="flex flex-col items-start gap-6">
             <Image className="w-auto h-auto" src={"/images/websiteLogo.svg"} alt="footer-logo" width={136} height={70}/>
