@@ -1,27 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');    
-@import "tailwindcss";    
 @import "tw-animate-css";    
 @import "shadcn/tailwind.css";    
+@import "tailwindcss";  
 
 @custom-variant dark (&:is(.dark *));
 
-.containers{
-    width: 1300px;
-    margin: 0 auto;
-}
-
 *{
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
 }
+
+
 body{
     min-height: 100vh;
     background-image: url("/images/project-bg.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+.containers{
+    width: 1300px;
+    margin: 0 auto;
 }
 
 :root {
@@ -135,14 +134,34 @@ body{
     --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-    }
-  body {
-    @apply bg-background text-foreground;
-    }
-  html {
-    @apply font-sans;
-    }
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #747171;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #47494b;
+}
+
+
+
+.popular-box{
+background-image: url("../public/images/popular-bg.png");
+background-position: center;
+background-size: contain;
+}
+
+.footer-box{
+  background-image: url("../public/images/footer-bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
