@@ -17,8 +17,9 @@ import Image from "next/image";
 const Order = () => {
   return (
     <div className="containers h-screen flex items-center justify-start relative">
-      <form className="flex flex-col items-start bg-[#cccccc] gap-10 w-[463px] py-10 rounded-[31px] px-13 relative pt-20">
-        <div className="bg-black px-7 py-6 rounded-full absolute -top-10 border-6 border-[#cccccc]">
+      <form className="w-[463px] bg-[#cccccc] rounded-[31px]">
+       <div className="flex flex-col items-start  gap-10  py-10 px-13 relative pt-20 z-2">
+       <div className="bg-black px-7 py-6 rounded-full absolute -top-10 border-6 border-[#cccccc]">
         <PlateIcon/>
         </div>
         <h2 className="text-[32px] font-bold">Забронировать стол</h2>
@@ -80,6 +81,7 @@ const Order = () => {
 <h2 className="text-[#06004C] text-sm mt-3 cursor-pointer">Выбрать места на карте</h2>
 </div>
 <Button className="cursor-pointer py-6! px-9!">Забронировать </Button>
+       </div>
 
       </form>
      <Image className="w-auto h-auto absolute -right-5" src={"/images/order-img.png"} alt="order-image" width={1025} height={936}/>
