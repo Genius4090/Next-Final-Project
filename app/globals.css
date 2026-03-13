@@ -161,6 +161,5 @@ background-size: cover;
 
 .footer-box{
   background-image: url("/images/footer-bg.png");
-  background-repeat: no-repeat;
-  background-position: center;
+
 }
