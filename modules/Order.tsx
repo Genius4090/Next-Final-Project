@@ -16,7 +16,7 @@ import Image from "next/image";
 
 const Order = () => {
   return (
-    <div className="containers h-screen flex items-center justify-start relative">
+    <div className="containers py-40 flex items-center justify-start relative">
       <form className="w-[463px] bg-[#cccccc] rounded-[31px]">
        <div className="flex flex-col items-start  gap-10  py-10 px-13 relative pt-20 z-2">
        <div className="bg-black px-7 py-6 rounded-full absolute -top-10 border-6 border-[#cccccc]">
