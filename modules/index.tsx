@@ -6,4 +6,6 @@ import Order from "./Order"
 import WhyPage from "./WhyPage"
 import News from "./News"
 import Footer from "./Footer"
-export {Hero,TopHeader,Navbar,Popular,Order,WhyPage,News,Footer}
+import NewsExtended from "./NewsExtended"
+import Contact from "./Contact"
+export {Hero,TopHeader,Navbar,Popular,Order,WhyPage,News,Footer,NewsExtended,Contact}

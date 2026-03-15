@@ -1,4 +1,4 @@
-import { DatePickerInput } from "@/components/customComponents/datePicker"
+import { DatePickerInput } from "@/components/datePicker"
 import { Input } from "@/components/ui/input"
 import { PlateIcon } from "@/public/icons"
 import { InputGroup, InputGroupInput } from "@/components/ui/input-group";

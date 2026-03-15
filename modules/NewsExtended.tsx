@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRightIcon } from "@/public/icons"
 import Image from "next/image"
 
-const News = () => {
+const NewsExtended = () => {
  
     interface newsListType {
         id:number,
@@ -33,13 +33,34 @@ const News = () => {
         description: "Используйте гибкие структуры, чтобы предоставить надежный обзор для обзоров высокого уровня. Итеративные подходы к данным корпоративной.",
         userAvatar:"/images/news-avatar.png",
         userName:"Сергей"
-    }  
+    },
+    {
+      id:4,
+      img: "/images/news-img-1.png",
+      description: "Используйте гибкие структуры, чтобы предоставить надежный обзор для обзоров высокого уровня. Итеративные подходы к данным корпоративной.",
+      userAvatar:"/images/news-avatar.png",
+      userName:"Сергей"
+  },
+  {
+      id:5,
+      img: "/images/news-img-1.png",
+      description: "Используйте гибкие структуры, чтобы предоставить надежный обзор для обзоров высокого уровня. Итеративные подходы к данным корпоративной.",
+      userAvatar:"/images/news-avatar.png",
+      userName:"Сергей"
+  },
+  {
+      id:6,
+      img: "/images/news-img-1.png",
+      description: "Используйте гибкие структуры, чтобы предоставить надежный обзор для обзоров высокого уровня. Итеративные подходы к данным корпоративной.",
+      userAvatar:"/images/news-avatar.png",
+      userName:"Сергей"
+  }
     ]
   return (
-    <section className="pb-10 pt-19">
-        <div className="containers flex flex-col gap-17">
-          <h2 className="text-5xl font-bold text-center">Новости/Галерея</h2>
-          <ul className="flex items-center justify-center gap-25 mt-29">
+    <section className="pb-10 ">
+        <div className="containers flex flex-col gap-14">
+          <h2 className="text-5xl font-bold text-center">Новости</h2>
+          <ul className="flex flex-wrap items-center justify-center gap-x-16 gap-y-45 mt-29">
             {newsList.map(item =><li key={item.id} className="bg-white/40 rounded-[30px] pb-4 flex flex-col items-start gap-3 pl-6 pr-2">
              <Image src={item.img} alt="news-image" width={213} height={157} className="w-auto h-auto -mt-20 rounded-[30px]"/>
              <p className="mt-3 max-w-[327px]">{item.description}</p>
@@ -49,8 +70,8 @@ const News = () => {
              </div>
             </li>)}
           </ul>
-  <div className="w-full flex justify-end">
-  <Button className="cursor-pointer py-6! px-5! rounded-br-none ">Посмотреть все <ArrowRightIcon/></Button>
+  <div className="w-full flex justify-center">
+     <span className="w-10 h-10 rounded-full border cursor-pointer bg-white/40 flex items-center justify-center">1</span>
   </div>
 
         </div>
@@ -58,4 +79,4 @@ const News = () => {
   )
 }
 
-export default News
+export default NewsExtended
