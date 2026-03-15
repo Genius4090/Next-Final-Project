@@ -33,7 +33,7 @@ const Contact = () => {
     <div className="pt-15 pb-25 flex flex-col items-center gap-20">
       <h2 className="text-5xl font-bold text-center">Связаться с нами</h2>
       <ul className="flex gap-[155px] ">
-        {contactData.map(item => <li className=" flex flex-col items-center">
+        {contactData.map(item => <li key={item.id} className=" flex flex-col items-center">
             {item.icon}
             <h3 className="mt-6 text-2xl">{item.title}</h3>
             {item.info.map((infoItem,index:number) => <p className="text-center w-[158px] mt-[2px]" key={index}>{infoItem}</p>)}

@@ -84,7 +84,7 @@ const Order = () => {
        </div>
 
       </form>
-     <Image className="w-auto h-auto absolute -right-5" src={"/images/order-img.png"} alt="order-image" width={1025} height={936}/>
+     <Image className="w-auto h-auto absolute -right-5" src={"/images/hero-order-img.png"} alt="order-image" width={1025} height={936}/>
     </div>
   )
 }
