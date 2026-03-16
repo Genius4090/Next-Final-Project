@@ -3,10 +3,12 @@ import Navbar from "./Navbar"
 import { ArrowRightIcon } from "@/public/icons"
 import Image from "next/image"
 import WrapperBox from "@/components/WrapperBox"
+import { useTranslations } from "next-intl"
 
 
 
 const Hero = () => {
+  const t = useTranslations()
   return (
     <section className="py-21">
       <WrapperBox >
@@ -14,8 +16,8 @@ const Hero = () => {
       <Navbar/>
       <div className="flex items-center justify-start gap-40 py-15 px-[68px]">
         <div className="w-[332px] flex flex-col gap-4 items-start z-2">
-          <h2 className="text-6xl tracking-wide font-black leading-23 uppercase">Вкусная еда ждет тебя!</h2>
-          <Button className="cursor-pointer py-6! px-5! rounded-br-none ">Посмотреть меню <ArrowRightIcon/></Button>
+          <h2 className="text-6xl tracking-wide font-black leading-23 uppercase">{t("HeroPage.title")}</h2>
+          <Button className="cursor-pointer py-6! px-5! rounded-br-none ">{t("HeroPage.btn")}<ArrowRightIcon/></Button>
         </div>
          <Image className="w-auto h-auto" src={"/images/hero-img.png"} alt="hero-img" width={613} height={609}/>
       </div>

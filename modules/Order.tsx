@@ -13,8 +13,10 @@ import {
 } from "@/components/ui/select"
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const Order = () => {
+  const t = useTranslations("OrderPage")
   return (
     <div className="containers py-40 flex items-center justify-start relative">
       <form className="w-[463px] bg-[#cccccc] rounded-[31px]">
@@ -22,19 +24,19 @@ const Order = () => {
        <div className="bg-black px-7 py-6 rounded-full absolute -top-10 border-6 border-[#cccccc]">
         <PlateIcon/>
         </div>
-        <h2 className="text-[32px] font-bold">Забронировать стол</h2>
+        <h2 className="text-[32px] font-bold">{t("heroTitle")}</h2>
 
-        <Input  placeholder="Ваш Номер" className=" border-transparent border-b-black rounded-none px-0 py-5 text-base!"/>
+        <Input  placeholder={t("inp1")} className=" border-transparent border-b-black rounded-none px-0 py-5 text-base!"/>
 
         <Select>
   <SelectTrigger className="w-full border-transparent border-b-black rounded-none px-0 py-5  text-base!">
-    <SelectValue placeholder="На сколько человек?" />
+    <SelectValue placeholder={t("inp2")} />
   </SelectTrigger>
   <SelectContent>
     <SelectGroup>
       {/* Placeholder, disabled so not selectable */}
       <SelectItem value="0" disabled>
-        На сколько человек?
+      {t("inp2")}
       </SelectItem>
 
       {/* Actual selectable items */}
@@ -50,7 +52,6 @@ const Order = () => {
 <InputGroup>
       {/* The actual time input */}
       <InputGroupInput
-     
         type="time"
         className="border-b text-base! border-black"
       />
@@ -61,13 +62,13 @@ const Order = () => {
 <div className="w-full">
 <Select>
   <SelectTrigger className="w-full border-transparent border-b-black rounded-none px-0 pb-6 text-base! ">
-    <SelectValue placeholder="Выберите место" />
+    <SelectValue placeholder={t("inp5")} />
   </SelectTrigger>
   <SelectContent>
     <SelectGroup>
       {/* Placeholder, disabled so not selectable */}
       <SelectItem value="0" disabled>
-      Выберите место
+      {t("inp5")}
       </SelectItem>
 
       {/* Actual selectable items */}
@@ -78,9 +79,9 @@ const Order = () => {
   </SelectContent>
 
 </Select>
-<h2 className="text-[#06004C] text-sm mt-3 cursor-pointer">Выбрать места на карте</h2>
+<h2 className="text-[#06004C] text-sm mt-3 cursor-pointer"> {t("link")}</h2>
 </div>
-<Button className="cursor-pointer py-6! px-9!">Забронировать </Button>
+<Button className="cursor-pointer py-6! px-9!"> {t("btn")}</Button>
        </div>
 
       </form>

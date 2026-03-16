@@ -1,7 +1,9 @@
 import { ContactIcon1, ContactIcon2, ContactIcon3 } from "@/public/icons"
+import { useTranslations } from "next-intl"
 import { ReactNode } from "react"
 
 const Contact = () => {
+  const t = useTranslations("OrderPage.contactBox")
  interface ContactType {
     id:number,
     icon:ReactNode,
@@ -13,7 +15,7 @@ const Contact = () => {
         {
             id: 1,
             icon: <ContactIcon1/>,
-            title: "Напишите нам",
+            title: t("contact1.title"),
             info: ["info@bmgsoft.com","t.me/bmgsoft.com"]
         },
         {
@@ -26,12 +28,12 @@ const Contact = () => {
             id: 3,
             icon: <ContactIcon3/>,
             title: "Посетите нас",
-            info: ["Узбекистан, Ташкент Улица, 24"]
+            info: [t("contact3.address")]
         }
     ]
   return (
     <div className="pt-15 pb-25 flex flex-col items-center gap-20">
-      <h2 className="text-5xl font-bold text-center">Связаться с нами</h2>
+      <h2 className="text-5xl font-bold text-center">{t("title")}</h2>
       <ul className="flex gap-[155px] ">
         {contactData.map(item => <li key={item.id} className=" flex flex-col items-center">
             {item.icon}

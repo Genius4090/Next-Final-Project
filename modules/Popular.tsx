@@ -1,13 +1,15 @@
 import { Button } from "@/components/ui/button"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { ArrowRightIcon, CartLightIcon, HeartIcon } from "@/public/icons"
+import { useTranslations } from "next-intl"
 import Image from "next/image"
 
 const Popular = () => {
+  const t = useTranslations()
   return (
   <div className="popular-box py-10">
       <div className="containers ">
-      <h2 className="font-bold text-5xl text-center">Популярные блюда</h2>
+      <h2 className="font-bold text-5xl text-center">{t("PopularPage.title")}</h2>
         <Carousel className="py-20 ">
   <CarouselContent className="">
     <CarouselItem  className="basis-1/4">
@@ -105,7 +107,7 @@ const Popular = () => {
   <CarouselNext/>
 </Carousel> 
 <div className="w-full flex justify-end">
-<Button className="cursor-pointer py-6! px-5! rounded-br-none ">Посмотреть меню <ArrowRightIcon/></Button>
+<Button className="cursor-pointer py-6! px-5! rounded-br-none ">{t("PopularPage.btn")}<ArrowRightIcon/></Button>
 </div>
     </div>
   </div>

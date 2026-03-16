@@ -2,34 +2,34 @@ import { FoodType } from "@/@types"
 import FoodCard from "@/components/FoodCard"
 import WrapperBox from "@/components/WrapperBox"
 import { Navbar, News } from "@/modules"
-import Image from "next/image"
-
+import { useTranslations } from "next-intl"
 
 const MenuPage = () => {
+  const t = useTranslations("MenuPage")
   const menuList:{id:number,title:string,isActive:boolean}[] = [
     {
       id:1,
-      title:"Первые",
+      title:t("menuBox.link1"),
       isActive:true
     },
     {
       id:2,
-      title:"Вторые",
+      title:t("menuBox.link2"),
       isActive:false
     },
     {
       id:3,
-      title:"Салаты",
+      title:t("menuBox.link3"),
       isActive:false
     },
     {
       id:4,
-      title:"Напитки",
+      title:t("menuBox.link4"),
       isActive:false
     },
     {
       id:5,
-      title:"Фаст-Фуд",
+      title:t("menuBox.link5"),
       isActive:false
     },
   ]
@@ -126,7 +126,7 @@ const MenuPage = () => {
       <WrapperBox>
         <Navbar/>
       <div className="menu-box flex flex-col items-center mt-40 ">
-      <h2 className="text-5xl font-bold">Меню</h2>
+      <h2 className="text-5xl font-bold">{t("title")}</h2>
        <ul className="menu-nav  bg-white/40 flex items-center center gap-2 py-3 px-5 rounded-full mt-14">
         {menuList.map(item => <li className={`text-lg px-5 py-1 font-semibold  ${item.isActive && "bg-white/40  rounded-full"}`} key={item.id}>{item.title}</li>)}
        </ul>

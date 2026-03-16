@@ -1,0 +1,125 @@
+{
+    "Topbar": {
+      "title": "Accout login"
+    },
+    "Navbar": {
+      "link1": "Menu",
+      "link2": "News",
+      "link3": "Order",
+      "link4": "About Us",
+      "link5": "Contact"
+    },
+    "HeroPage": {
+      "title": "Delicious food is waiting for you",
+      "btn": "See menu"
+    },
+    "PopularPage": {
+      "title": "Popular meals",
+      "btn": "See menu"
+    },
+    "WhyPage": {
+      "title": "Why us?",
+      "el1": {
+        "title": "Quality products",
+        "description": "Entrance tickets to museums, attractions, and monuments"
+      },
+      "el2": {
+        "title": "Fast delivery",
+        "description": "Entrance tickets to museums, attractions, and monuments"
+      },
+      "el3": {
+        "title": "Delicious recipies",
+        "description": "Entrance tickets to museums, attractions, and monuments"
+      },
+      "el4": {
+        "title": "Cozy atmosphere",
+        "description": "Entrance tickets to museums, attractions, and monuments"
+      },
+      "el5": {
+        "title": "Experienced chefs",
+        "description": "Entrance tickets to museums, attractions, and monuments"
+      },
+      "el6": {
+        "title": "Services",
+        "description": "Entrance tickets to museums, attractions, and monuments"
+      }
+    },
+    "NewsPage": {
+      "title": "News/Gallery",
+      "btn": "See all"
+    },
+    "FooterPage": {
+      "box1": {
+        "title": "Our services",
+        "text1": "Prices",
+        "text2": "Tracking",
+        "text3": "Report an issue",
+        "text4": "Terms of Service"
+      },
+      "box2": {
+        "title": "Our company",
+        "text1": "Reporting",
+        "text2": "Contact with us",
+        "text3": "Management"
+      },
+      "box3": {
+        "title": "Address",
+        "text1": "Uzbekistan, Tashkent street, 24",
+        "text2": "+99894848844848",
+        "text3": "info@bmgsoft.com"
+      }
+    },
+    "MenuPage": {
+      "title": "Menu",
+      "menuBox": {
+        "link1": "First",
+        "link2": "Second",
+        "link3": "Salads",
+        "link4": "Drinks",
+        "link5": "Fast-food"
+      }
+    },
+    "NewsExtendedPage": {
+      "title": "News"
+    },
+    "GalleryPage": {
+      "title": "Gallery"
+    },
+    "OrderPage": {
+      "title": "Booking",
+      "heroTitle": "Book a table",
+      "inp1": "Phone number",
+      "inp2": "How many people",
+      "inp3": "Select date",
+      "inp4": "Select time",
+      "inp5": "Select place",
+      "link": "Select place at map",
+      "btn": "Book",
+      "scheduleBox": {
+        "title": "Opening hours",
+        "day1": "Monday",
+        "day2": "Tuesday",
+        "day3": "Wednesday",
+        "day4": "Thursday",
+        "day5": "Friday",
+        "day6": "Sunday"
+      },
+      "orderBox": {
+        "title": "Want to book a table?"
+      },
+      "contactBox": {
+        "title" : "Contact with us",
+        "contact1": {
+          "title": "Contact us"
+        },
+        "contact2": {
+          "title": "Call us"
+        },
+        "contact3": {
+          "title": "Visut us",
+          "address": "Uzbekistan, Tashkent street, 24"
+        }
+      }
+    }
+  }
+  

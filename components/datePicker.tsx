@@ -15,6 +15,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { CalendarIcon } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 function formatDate(date: Date | undefined) {
   if (!date) return ""
@@ -30,6 +31,7 @@ function isValidDate(date: Date | undefined) {
 }
 
 export function DatePickerInput() {
+  const t = useTranslations()
   const [open, setOpen] = React.useState(false)
   const [date, setDate] = React.useState<Date | undefined>(undefined) // start with no date
   const [month, setMonth] = React.useState<Date | undefined>(new Date()) // calendar shows current month
@@ -41,7 +43,7 @@ export function DatePickerInput() {
         <InputGroupInput
           id="date-required"
           value={value}
-          placeholder="Выберите время"
+          placeholder= {t("OrderPage.inp3")}
           className="px-0! text-base!"
           onChange={(e) => {
             const inputDate = new Date(e.target.value)

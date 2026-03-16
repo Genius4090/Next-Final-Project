@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRightIcon } from "@/public/icons"
+import { useTranslations } from "next-intl"
 import Image from "next/image"
 
 const News = () => {
- 
+    const t = useTranslations("NewsPage")
     interface newsListType {
         id:number,
         img:string,
@@ -38,7 +39,7 @@ const News = () => {
   return (
     <section className="pb-10 pt-19">
         <div className="containers flex flex-col gap-17">
-          <h2 className="text-5xl font-bold text-center">Новости/Галерея</h2>
+          <h2 className="text-5xl font-bold text-center">{t("title")}</h2>
           <ul className="flex items-center justify-center gap-25 mt-29">
             {newsList.map(item =><li key={item.id} className="bg-white/40 rounded-[30px] pb-4 flex flex-col items-start gap-3 pl-6 pr-2">
              <Image src={item.img} alt="news-image" width={213} height={157} className="w-auto h-auto -mt-20 rounded-[30px]"/>
@@ -50,7 +51,7 @@ const News = () => {
             </li>)}
           </ul>
   <div className="w-full flex justify-end">
-  <Button className="cursor-pointer py-6! px-5! rounded-br-none ">Посмотреть все <ArrowRightIcon/></Button>
+  <Button className="cursor-pointer py-6! px-5! rounded-br-none ">{t("btn")} <ArrowRightIcon/></Button>
   </div>
 
         </div>

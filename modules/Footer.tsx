@@ -1,68 +1,71 @@
 import { SocialIcon1, SocialIcon2, SocialIcon3, SocialIcon4 } from "@/public/icons"
+import { useTranslations } from "next-intl"
 import Image from "next/image"
 
-const Footer = () => {
-  interface footerListType {
+interface footerListType {
     id:number,
     ulTitle:string,
     children: Array<{childId:number,title:string}>
   }
+
+const Footer = () => {
+const t = useTranslations("FooterPage")
 const footerList:footerListType[] = [
     {
         id:1,
-        ulTitle:"Наши услуги",
+        ulTitle: t("box1.title"),
         children: [
             {
                 childId:1,
-                title:"Цены"
+                title:t("box1.text1")
             },
             {
                 childId:2,
-                title:"Отслеживание"
+                title:t("box1.text2")
             },
             {
                 childId:3,
-                title:"Cообщить об ошибке"
+                title:t("box1.text3")
             },
             {
                 childId:4,
-                title:"Условия услуг"
+                title:t("box1.text4")
             }
         ]
     },
     {
         id:2,
-        ulTitle:"Наши услуги",
+        ulTitle:t("box2.title"),
         children: [
             {
                 childId:5,
-                title:"Отчетность"
+                title:t("box1.text1")
             },
             {
                 childId:6,
-                title:"Cвяжитесь с нами"
+                title:t("box1.text2")
             },
             {
                 childId:7,
-                title:"Управление"
+                title:t("box1.text3")
             }
         ]
     },
     {
         id:3,
-        ulTitle:"Наши услуги",
+        ulTitle:t("box3.title"),
         children: [
             {
                 childId:8,
-                title:"Узбекистан, Ташкент Улица, 24"
+                title:t("box3.text1")
             },
             {
                 childId:9,
-                title:"+99894848844848"
+                title:t("box3.text2")
             },
             {
                 childId:10,
-                title:"info@bmgsoft.com"
+                title:t("box3.text3")
             }
         ]
     }
