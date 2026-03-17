@@ -1,5 +1,4 @@
 import { Footer, TopHeader } from "@/modules";
-
 export default function MainLayout({
   children,
 }: {
@@ -8,11 +7,9 @@ export default function MainLayout({
   return (
     <>
       <TopHeader />
-      
       <main className="min-h-screen">
         {children}
       </main>
-
       <Footer />
     </>
   );

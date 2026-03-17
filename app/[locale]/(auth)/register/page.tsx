@@ -2,15 +2,17 @@
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Link } from "@/i18n/navigation"
+import { Link, useRouter } from "@/i18n/navigation"
 import { RegisterFn } from "@/services"
 import { useTranslations } from "next-intl"
 import { SubmitEvent } from "react"
+import { toast } from "sonner"
 
 
 const RegisterPage = () => {
   const t = useTranslations("OrderPage")
-  function handleRegisterSubmit (e: SubmitEvent<HTMLFormElement>){
+  const router = useRouter()
+  async function handleRegisterSubmit (e: SubmitEvent<HTMLFormElement>){
   e.preventDefault()
   const data = {
     firstName: e.target.firstName.value,
@@ -19,8 +21,18 @@ const RegisterPage = () => {
     username: e.target.username.value,
     password: e.target.password.value
   }
-  console.log(data);
-  RegisterFn(data)
+
+  const res = await RegisterFn(data)
+
+  if (res?.success) {
+    // 🎯 business goal achieved → redirect
+    toast.success("Account successfully created")
+    setTimeout(()=>{
+      router.push("/login")
+    },1000)
+  } else {
+    toast.success(`Error occured`)
+  }
   }
   return (
     <div className="containers flex py-15 justify-center relative ">

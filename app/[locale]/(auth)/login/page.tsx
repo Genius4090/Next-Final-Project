@@ -1,25 +1,37 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Link } from "@/i18n/navigation"
+import { Link, useRouter } from "@/i18n/navigation"
 import { PlateIcon } from "@/public/icons"
 import { LoginFn } from "@/services"
+import { setCookie } from "cookies-next"
 
 import { useTranslations } from "next-intl"
 import { SubmitEvent } from "react"
+import { toast } from "sonner"
 
 
 const LoginPage = () => {
+  const router = useRouter()
   const t = useTranslations("OrderPage")
-
-  function handleLoginSubmit (e: SubmitEvent<HTMLFormElement>){
+  const handleLoginSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
   e.preventDefault()
   const data = {
     username: e.target.username.value,
     password: e.target.password.value
   }
+  const res = await LoginFn(data)   
+  if(res){
+    setCookie("token", res.data.accessToken);
+    setCookie("userInfo", JSON.stringify({
+      username: `${res.data.user.firstName} ${res.data.user.lastName} `
+    }));
+    router.push("/menu")
+    toast.success("Successfully logged in", { position: "top-center" })
 
- LoginFn(data)
+  }else {
+    toast.error("Error occured", { position: "top-center" })
+  }
   }
 
 

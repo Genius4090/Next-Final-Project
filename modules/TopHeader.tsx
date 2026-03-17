@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import { Link, usePathname, useRouter } from "@/i18n/navigation"
-import { MailIcon, PhoneIcon, RussiaIcon, SignInIcon } from "@/public/icons"
+import { MailIcon, PhoneIcon, SignInIcon } from "@/public/icons"
 import { useLocale, useTranslations } from "next-intl"
 
 
@@ -13,8 +13,29 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { useEffect, useState } from "react"
+import { getCookie } from "cookies-next"
 
 const TopHeader = () => {
+
+  const [user, setUser] = useState<{ username: string } | null>(null);
+
+ 
+useEffect(() => {
+  const value = getCookie("userInfo");
+
+  if (value) {
+    try {
+      const parsed = JSON.parse(value as string);
+      setUser(parsed);
+    } catch (err) {
+      console.error("Failed to parse userInfo cookie:", err);
+      setUser(null);
+    }
+  } else {
+    setUser(null);
+  }
+}, []);
+
   const locale = useLocale()
   const pathname = usePathname()
   const router = useRouter()
@@ -72,9 +93,9 @@ const TopHeader = () => {
             </PopoverContent>
           </Popover>
 
-
-
-    <Button  className="py-3! px-3.5! text-sm cursor-pointer"><SignInIcon/><Link href={"/login"}>{t("Topbar.title")}</Link></Button>
+             {user ? <Button  className="py-3! px-3.5! text-sm cursor-pointer"><SignInIcon/>{user?.username}</Button> :  <Button className="py-3! px-3.5! text-sm cursor-pointer"><SignInIcon/><Link href={"/login"}>{t("Topbar.title")}</Link></Button>}
+          
+   
  </div>
    </div>
     </section>
