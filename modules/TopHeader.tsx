@@ -1,6 +1,6 @@
 "use client"
 import { Button } from "@/components/ui/button"
-import { usePathname, useRouter } from "@/i18n/navigation"
+import { Link, usePathname, useRouter } from "@/i18n/navigation"
 import { MailIcon, PhoneIcon, RussiaIcon, SignInIcon } from "@/public/icons"
 import { useLocale, useTranslations } from "next-intl"
 
@@ -34,7 +34,7 @@ const TopHeader = () => {
   }, [])
 
   return (
-    <section className={`py-3 fixed w-full z-100 ${scrolled ? "backdrop-blur-md" : "bg-transparent"}`}>
+    <section className={`py-3 fixed w-full z-40 ${scrolled ? "backdrop-blur-md" : "bg-transparent"}`}>
    <div className="containers flex items-center justify-between">
  <div className="flex gap-[27px]">
     <span className="flex items-center gap-[11px]"><PhoneIcon/> <p>info@bmgsoft.com</p></span>
@@ -74,7 +74,7 @@ const TopHeader = () => {
 
 
 
-    <Button className="py-3! px-3.5! text-sm cursor-pointer"><SignInIcon/>{t("Topbar.title")}</Button>
+    <Button  className="py-3! px-3.5! text-sm cursor-pointer"><SignInIcon/><Link href={"/login"}>{t("Topbar.title")}</Link></Button>
  </div>
    </div>
     </section>

@@ -1,104 +1,43 @@
+import { ProductType } from "@/@types"
 import { Button } from "@/components/ui/button"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { ArrowRightIcon, CartLightIcon, HeartIcon } from "@/public/icons"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
 
-const Popular = () => {
+
+
+
+
+const Popular = ({popularProducts} : {popularProducts : ProductType[]}) => {
+  
   const t = useTranslations()
   return (
   <div className="popular-box py-10">
       <div className="containers ">
       <h2 className="font-bold text-5xl text-center">{t("PopularPage.title")}</h2>
-        <Carousel className="py-20 ">
-  <CarouselContent className="">
-    <CarouselItem  className="basis-1/4">
-      <div className=" w-[263px] ">
-       <div className="relative h-18 flex items-center justify-center z-4 ">
-       <Image className="w-auto h-auto top-0 absolute" src={"/images/popular-img.png"} alt="popular-img" width={224} height={217}/>
-       </div>
-        <div className="bg-white/40 relative pt-40 px-4 flex flex-col p-5 gap-2 items-start justify-end rounded-[38px]">
-          <div className="w-full flex justify-between items-center">
-            <h3 className="text-2xl font-bold">Chicken soup</h3>
+        <Carousel className="py-15">
+  <CarouselContent className="py-15">
+    {popularProducts?.splice(0,6).map(item => 
+<CarouselItem key={item.id}  className="basis-1/4 flex items-center justify-center">
+<div className="w-[263px] relative min-h-[310px] bg-white/40 rounded-[38px] flex flex-col items-center">
+      <Image src={`https://anorkhulov.uz/${item.image}`} alt="card-image" width={243} height={253} className="w-auto h-auto -mt-20"/>
+      <div className=" w-full px-5  h-full flex flex-col justify-between pb-4">
+       <div>
+       <div className="w-full flex justify-between items-center ">
+            <h3 className="text-2xl font-bold">{item.name}</h3>
             <Button size={"icon"} className="cursor-pointer bg-transparent mt-0.5"><HeartIcon/></Button>
           </div>
-          <p className="">Spicy with Garlic</p>
-          <p className="mt-4 font-bold text-2xl">$10.00</p>
-          <Button className="cursor-pointer absolute right-5 p-5 rounded-sm" size={"icon"}><CartLightIcon/></Button>
-        </div>
-
-      </div>
-    </CarouselItem>
-    <CarouselItem  className="basis-1/4">
-      <div className=" w-[263px] ">
-       <div className="relative h-18 flex items-center justify-center z-4 ">
-       <Image className="w-auto h-auto top-0 absolute" src={"/images/popular-img.png"} alt="popular-img" width={224} height={217}/>
+          <p className="mt-2">Spicy with Garlic</p>
        </div>
-        <div className="bg-white/40 relative pt-40 px-4 flex flex-col p-5 gap-2 items-start justify-end rounded-[38px]">
-          <div className="w-full flex justify-between items-center">
-            <h3 className="text-2xl font-bold">Chicken soup</h3>
-            <Button size={"icon"} className="cursor-pointer bg-transparent mt-0.5"><HeartIcon/></Button>
-          </div>
-          <p className="">Spicy with Garlic</p>
           <p className="mt-4 font-bold text-2xl">$10.00</p>
-          <Button className="cursor-pointer absolute right-5 p-5 rounded-sm" size={"icon"}><CartLightIcon/></Button>
+          <Button className="cursor-pointer absolute right-8 bottom-7 p-4 rounded-sm scale-140" size={"icon"}><CartLightIcon/></Button>
         </div>
-
-      </div>
-    </CarouselItem>
+    </div>
+</CarouselItem>
+    )}
+    
   
-    <CarouselItem  className="basis-1/4">
-      <div className=" w-[263px] ">
-       <div className="relative h-18 flex items-center justify-center z-4 ">
-       <Image className="w-auto h-auto top-0 absolute" src={"/images/popular-img.png"} alt="popular-img" width={224} height={217}/>
-       </div>
-        <div className="bg-white/40 relative pt-40 px-4 flex flex-col p-5 gap-2 items-start justify-end rounded-[38px]">
-          <div className="w-full flex justify-between items-center">
-            <h3 className="text-2xl font-bold">Chicken soup</h3>
-            <Button size={"icon"} className="cursor-pointer bg-transparent mt-0.5"><HeartIcon/></Button>
-          </div>
-          <p className="">Spicy with Garlic</p>
-          <p className="mt-4 font-bold text-2xl">$10.00</p>
-          <Button className="cursor-pointer absolute right-5 p-5 rounded-sm" size={"icon"}><CartLightIcon/></Button>
-        </div>
-
-      </div>
-    </CarouselItem>
-
-    <CarouselItem  className="basis-1/4">
-      <div className=" w-[263px] ">
-       <div className="relative h-18 flex items-center justify-center z-4 ">
-       <Image className="w-auto h-auto top-0 absolute" src={"/images/popular-img.png"} alt="popular-img" width={224} height={217}/>
-       </div>
-        <div className="bg-white/40 relative pt-40 px-4 flex flex-col p-5 gap-2 items-start justify-end rounded-[38px]">
-          <div className="w-full flex justify-between items-center">
-            <h3 className="text-2xl font-bold">Chicken soup</h3>
-            <Button size={"icon"} className="cursor-pointer bg-transparent mt-0.5"><HeartIcon/></Button>
-          </div>
-          <p className="">Spicy with Garlic</p>
-          <p className="mt-4 font-bold text-2xl">$10.00</p>
-          <Button className="cursor-pointer absolute right-5 p-5 rounded-sm" size={"icon"}><CartLightIcon/></Button>
-        </div>
-
-      </div>
-    </CarouselItem>
-    <CarouselItem  className="basis-1/4">
-      <div className=" w-[263px] ">
-       <div className="relative h-18 flex items-center justify-center z-4 ">
-       <Image className="w-auto h-auto top-0 absolute" src={"/images/popular-img.png"} alt="popular-img" width={224} height={217}/>
-       </div>
-        <div className="bg-white/40 relative pt-40 px-4 flex flex-col p-5 gap-2 items-start justify-end rounded-[38px]">
-          <div className="w-full flex justify-between items-center">
-            <h3 className="text-2xl font-bold">Chicken soup</h3>
-            <Button size={"icon"} className="cursor-pointer bg-transparent mt-0.5"><HeartIcon/></Button>
-          </div>
-          <p className="">Spicy with Garlic</p>
-          <p className="mt-4 font-bold text-2xl">$10.00</p>
-          <Button className="cursor-pointer absolute right-5 p-5 rounded-sm" size={"icon"}><CartLightIcon/></Button>
-        </div>
-
-      </div>
-    </CarouselItem>
     
   
   </CarouselContent>
