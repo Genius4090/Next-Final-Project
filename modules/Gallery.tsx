@@ -1,43 +1,15 @@
+import { GalleryType } from "@/@types"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
 
-const Gallery = () => {
+const Gallery = ({galleryList} : {galleryList:GalleryType[]}) => {
     const t = useTranslations()
-    const galleryList:{id:number,image:string}[] = [
-        {
-            id:1,
-            image: "/images/gallery-img.png"
-        },{
-            id:2,
-            image: "/images/gallery-img.png"
-        },{
-            id:3,
-            image: "/images/gallery-img.png"
-        },
-        {
-            id:4,
-            image: "/images/gallery-img.png"
-        },{
-            id:5,
-            image: "/images/gallery-img.png"
-        },{
-            id:6,
-            image: "/images/gallery-img.png"
-        },
-        {
-            id:7,
-            image: "/images/gallery-img.png"
-        },{
-            id:8,
-            image: "/images/gallery-img.png"
-        }
-    ]
   return (
     <section className="py-10">
       <h2 className="text-5xl font-bold text-center">{t("GalleryPage.title")}</h2>
         <ul className="flex flex-wrap gap-x-6 gap-y-12 justify-center mt-19"> 
             {galleryList.map(item => <li key={item.id}>
-                <Image src={item.image} alt="item-image" width={274} height={185} className="w-auto h-auto"/>
+                <Image src={`https://anorkhulov.uz/${item.image}`} alt="item-image" width={274} height={185} className="w-[274px] h-[185px]"/>
             </li>)}
         </ul>
         <div className="w-full flex justify-center">

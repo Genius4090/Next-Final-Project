@@ -47,3 +47,12 @@ export interface ProductType {
     position: string
     role: string
   }
+
+  export interface GalleryType {
+    id: number
+    isActive: boolean
+    createdAt: string
+    updatedAt: string
+    image: string
+  }
+  

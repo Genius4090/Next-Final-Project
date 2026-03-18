@@ -1,72 +1,22 @@
-import { Button } from "@/components/ui/button"
-import { ArrowRightIcon } from "@/public/icons"
+import { NewsType } from "@/@types"
 import Image from "next/image"
 
-const NewsExtended = () => {
+const NewsExtended = ({newsExtended}:{newsExtended : NewsType[]}) => {
  
-    interface newsListType {
-        id:number,
-        img:string,
-        description:string,
-        userAvatar:string,
-        userName:string
-    }
 
-    const newsList:newsListType[] = [
-      {
-        id:1,
-        img: "/images/news-img-1.png",
-        description: "Используйте гибкие структуры, чтобы предоставить надежный обзор для обзоров высокого уровня. Итеративные подходы к данным корпоративной.",
-        userAvatar:"/images/news-avatar.png",
-        userName:"Сергей"
-    },
-    {
-        id:2,
-        img: "/images/news-img-1.png",
-        description: "Используйте гибкие структуры, чтобы предоставить надежный обзор для обзоров высокого уровня. Итеративные подходы к данным корпоративной.",
-        userAvatar:"/images/news-avatar.png",
-        userName:"Сергей"
-    },
-    {
-        id:3,
-        img: "/images/news-img-1.png",
-        description: "Используйте гибкие структуры, чтобы предоставить надежный обзор для обзоров высокого уровня. Итеративные подходы к данным корпоративной.",
-        userAvatar:"/images/news-avatar.png",
-        userName:"Сергей"
-    },
-    {
-      id:4,
-      img: "/images/news-img-1.png",
-      description: "Используйте гибкие структуры, чтобы предоставить надежный обзор для обзоров высокого уровня. Итеративные подходы к данным корпоративной.",
-      userAvatar:"/images/news-avatar.png",
-      userName:"Сергей"
-  },
-  {
-      id:5,
-      img: "/images/news-img-1.png",
-      description: "Используйте гибкие структуры, чтобы предоставить надежный обзор для обзоров высокого уровня. Итеративные подходы к данным корпоративной.",
-      userAvatar:"/images/news-avatar.png",
-      userName:"Сергей"
-  },
-  {
-      id:6,
-      img: "/images/news-img-1.png",
-      description: "Используйте гибкие структуры, чтобы предоставить надежный обзор для обзоров высокого уровня. Итеративные подходы к данным корпоративной.",
-      userAvatar:"/images/news-avatar.png",
-      userName:"Сергей"
-  }
-    ]
+
+  
   return (
     <section className="pb-10 ">
         <div className="containers flex flex-col gap-14">
           <h2 className="text-5xl font-bold text-center">Новости</h2>
           <ul className="flex flex-wrap items-center justify-center gap-x-16 gap-y-45 mt-29">
-            {newsList.map(item =><li key={item.id} className="bg-white/40 rounded-[30px] pb-4 flex flex-col items-start gap-3 pl-6 pr-2">
-             <Image src={item.img} alt="news-image" width={213} height={157} className="w-auto h-auto -mt-20 rounded-[30px]"/>
+            {newsExtended.map(item =><li key={item.id} className="bg-white/40 rounded-[30px] pb-4 flex flex-col items-start gap-3 pl-6 pr-2">
+             <Image src={`https://anorkhulov.uz/${item.image}`} alt="news-image" width={213} height={157} className="w-auto h-auto -mt-20 rounded-[30px]"/>
              <p className="mt-3 max-w-[327px]">{item.description}</p>
              <div className="flex items-center gap-3">
-             <Image src={item.userAvatar} alt="news-user-avatar" width={45} height={45} className="w-auto h-auto"/>
-               <h2 className="text-lg font-semibold">{item.userName}</h2>
+             <Image src={`https://anorkhulov.uz/${item.author.avatar}`} alt="news-user-avatar" width={45} height={45} className="w-auto h-auto"/>
+               <h2 className="text-lg font-semibold">{`${item.author.firstName} ${item.author.lastName}`}</h2>
              </div>
             </li>)}
           </ul>

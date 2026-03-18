@@ -29,7 +29,7 @@ interface Author {
 
 const News = ({newsElements} : {newsElements : newsListType[]}) => {
     const t = useTranslations("NewsPage")
-
+    
     
     
   return (
@@ -37,7 +37,7 @@ const News = ({newsElements} : {newsElements : newsListType[]}) => {
         <div className="containers flex flex-col gap-17">
           <h2 className="text-5xl font-bold text-center">{t("title")}</h2>
           <ul className="flex items-center justify-center gap-25 mt-29">
-            {newsElements.map(item =><li key={item.id} className="bg-white/40 rounded-[30px] pb-4 flex flex-col items-start gap-3 pl-6 pr-2">
+            {newsElements.slice(0,3).map(item =><li key={item.id} className="bg-white/40 rounded-[30px] pb-4 flex flex-col items-start gap-3 pl-6 pr-2">
              <Image src={`https://anorkhulov.uz/${item.image}`}  alt="news-image" width={213} height={157} className="w-auto h-auto -mt-20 rounded-[30px]"/>
              <p className="mt-3 max-w-[327px]">{item.description}</p>
              <div className="flex items-center gap-3">
