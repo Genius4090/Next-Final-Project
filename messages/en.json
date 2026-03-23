@@ -1,6 +1,7 @@
 {
     "Topbar": {
-      "title": "Accout login"
+      "title": "Accout login",
+    "exit": "LogOut"
     },
     "Navbar": {
       "link1": "Menu",

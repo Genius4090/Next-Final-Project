@@ -14,24 +14,29 @@ import { toast } from "sonner"
 const LoginPage = () => {
   const router = useRouter()
   const t = useTranslations("OrderPage")
-  const handleLoginSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
+
+  const handleLoginSubmit = (e: SubmitEvent<HTMLFormElement>) => {
   e.preventDefault()
   const data = {
     username: e.target.username.value,
     password: e.target.password.value
   }
-  const res = await LoginFn(data)   
-  if(res){
-    setCookie("token", res.data.accessToken);
+  LoginFn(data).then(res => res).then(data => {
+  if(data){
+    setCookie("token", data.data.accessToken);
+    setCookie("userId", data.data.user.id);
     setCookie("userInfo", JSON.stringify({
-      username: `${res.data.user.firstName} ${res.data.user.lastName} `
-    }));
-    router.push("/menu")
+      username: `${data.data.user.firstName} ${data.data.user.lastName}`,
+    }))
     toast.success("Successfully logged in", { position: "top-center" })
-
+    setTimeout(()=>{
+      router.push("/menu")
+    },1000)
   }else {
-    toast.error("Error occured", { position: "top-center" })
+   toast.error(`error occured`,{ position: "top-center" })
   }
+  })   
+ 
   }
 
 

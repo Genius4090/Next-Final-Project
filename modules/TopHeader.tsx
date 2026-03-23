@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import { Link, usePathname, useRouter } from "@/i18n/navigation"
-import { MailIcon, PhoneIcon, SignInIcon } from "@/public/icons"
+import { LogOutIcon, MailIcon, PhoneIcon, SignInIcon } from "@/public/icons"
 import { useLocale, useTranslations } from "next-intl"
 
 
@@ -13,16 +13,19 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { useEffect, useState } from "react"
-import { getCookie } from "cookies-next"
+import { deleteCookie, getCookie } from "cookies-next"
 
 const TopHeader = () => {
 
   const [user, setUser] = useState<{ username: string } | null>(null);
-
+  const locale = useLocale()
+  const pathname = usePathname()
+  const router = useRouter()
+  const t = useTranslations()
+  const [scrolled, setScrolled] = useState<boolean>(false)
  
 useEffect(() => {
   const value = getCookie("userInfo");
-
   if (value) {
     try {
       const parsed = JSON.parse(value as string);
@@ -36,11 +39,7 @@ useEffect(() => {
   }
 }, []);
 
-  const locale = useLocale()
-  const pathname = usePathname()
-  const router = useRouter()
-  const t = useTranslations()
-  const [scrolled, setScrolled] = useState<boolean>(false)
+
 
   const changeLanguage = (lang: string) => {
     router.push(pathname, { locale: lang })
@@ -54,6 +53,16 @@ useEffect(() => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+
+  // logout 
+
+  function handleLogOut(){
+    deleteCookie("token")
+    deleteCookie("userInfo")
+    deleteCookie("userId")
+    setUser(null)
+    router.refresh()
+  }
   return (
     <section className={`py-3 fixed w-full z-40 ${scrolled ? "backdrop-blur-md" : "bg-transparent"}`}>
    <div className="containers flex items-center justify-between">
@@ -91,10 +100,19 @@ useEffect(() => {
                 English
               </button>
             </PopoverContent>
-          </Popover>
+  </Popover>
+           
+             {user ? <Popover>
+            <PopoverTrigger asChild>
+            <Button className="py-3! px-3.5! text-sm cursor-pointer"><SignInIcon/>{user?.username}</Button>
+            </PopoverTrigger>
 
-             {user ? <Button  className="py-3! px-3.5! text-sm cursor-pointer"><SignInIcon/>{user?.username}</Button> :  <Button className="py-3! px-3.5! text-sm cursor-pointer"><SignInIcon/><Link href={"/login"}>{t("Topbar.title")}</Link></Button>}
-          
+            <PopoverContent className="w-[160px] p-2">
+            <Button onClick={()=> handleLogOut()} className="py-3! px-3.5! text-sm cursor-pointer bg-red-500"><LogOutIcon/>{t("Topbar.exit")}</Button>
+            </PopoverContent>
+          </Popover> :  
+          <Button className="py-3! px-3.5! text-sm cursor-pointer"><SignInIcon/><Link href={"/login"}>{t("Topbar.title")}</Link></Button>}
+           
    
  </div>
    </div>

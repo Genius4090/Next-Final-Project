@@ -56,3 +56,37 @@ export interface ProductType {
     image: string
   }
   
+
+
+
+
+
+  export interface CartProduct {
+    id: number
+    status: string
+    user: AuthorType
+    table: any
+    itemCount: number
+    subtotal: number
+    items: CartItem[]
+  }
+  
+  
+  
+  export interface CartItem {
+    id: number
+    quantity: number
+    note: any
+    unitPrice: number
+    totalPrice: number
+    product: Product
+  }
+  
+  export interface Product {
+    id: number
+    name: string
+    image: string
+    price: number
+    isAvailable: boolean
+  }
+  

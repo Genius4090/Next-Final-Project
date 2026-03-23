@@ -139,7 +139,7 @@ body{
 }
 
 ::-webkit-scrollbar-track {
-  background: #111;
+  background: #11111100;
 }
 
 ::-webkit-scrollbar-thumb {

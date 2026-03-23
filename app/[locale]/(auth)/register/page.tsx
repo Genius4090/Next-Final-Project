@@ -12,7 +12,7 @@ import { toast } from "sonner"
 const RegisterPage = () => {
   const t = useTranslations("OrderPage")
   const router = useRouter()
-  async function handleRegisterSubmit (e: SubmitEvent<HTMLFormElement>){
+  function handleRegisterSubmit (e: SubmitEvent<HTMLFormElement>){
   e.preventDefault()
   const data = {
     firstName: e.target.firstName.value,
@@ -22,17 +22,21 @@ const RegisterPage = () => {
     password: e.target.password.value
   }
 
-  const res = await RegisterFn(data)
+  RegisterFn(data).then(res => {
+    if (res?.success) {
+      toast.success("Account successfully created",{ position: "top-center" });
+  
+      setTimeout(() => {
+        router.push("/login");
+      }, 1000);
+  
+    } else if (res?.err) {
+      toast.error(res.message || "Error occurred",{ position: "top-center" });
+    }
 
-  if (res?.success) {
-    // 🎯 business goal achieved → redirect
-    toast.success("Account successfully created")
-    setTimeout(()=>{
-      router.push("/login")
-    },1000)
-  } else {
-    toast.success(`Error occured`)
-  }
+    
+  });
+
   }
   return (
     <div className="containers flex py-15 justify-center relative ">
@@ -42,7 +46,7 @@ const RegisterPage = () => {
       <h2 className="text-[32px] font-bold">Зарегистрироваться</h2>
       <Input name="firstName"  placeholder="Ваше имя" className=" border-transparent border-b-black rounded-none px-0 py-5 text-base! placeholder:text-[#585858]"/>
       <Input name="lastName"  placeholder="Фамилия" className=" border-transparent border-b-black rounded-none px-0 py-5 text-base! placeholder:text-[#585858]"/>
-      <Input name="email"  placeholder="Ваш номер телефона" className=" border-transparent border-b-black rounded-none px-0 py-5 text-base! placeholder:text-[#585858]"/>
+      <Input name="email"  placeholder="Ваша почта" className=" border-transparent border-b-black rounded-none px-0 py-5 text-base! placeholder:text-[#585858]"/>
       <Input name="username"  placeholder="Ваше имя пользователя" className=" border-transparent border-b-black rounded-none px-0 py-5 text-base! placeholder:text-[#585858]"/>
      
       <Input name="password"  placeholder="Пароль" type="password" className=" border-transparent border-b-black rounded-none px-0 py-5 text-base! placeholder:text-[#585858]"/>
