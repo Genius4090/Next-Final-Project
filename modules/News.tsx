@@ -1,35 +1,24 @@
+"use client"
+
+import { NewsType } from "@/@types"
 import { Button } from "@/components/ui/button"
 import { ArrowRightIcon } from "@/public/icons"
+import { GetAllFn } from "@/services"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
-interface newsListType {
-  id: number
-  isActive: boolean
-  createdAt: string
-  updatedAt: string
-  image: string
-  description: string
-  author: Author
-}
+import { useEffect, useState } from "react"
 
-interface Author {
-  id: number
-  isActive: boolean
-  createdAt: string
-  updatedAt: string
-  firstName: string
-  lastName: any
-  email: string
-  username: string
-  avatar: string
-  address: string
-  position: string
-  role: string
-}
 
-const News = ({newsElements} : {newsElements : newsListType[]}) => {
+
+const NewsPage = () => {
     const t = useTranslations("NewsPage")
-    
+    const [newsList,setNewsList] = useState<NewsType[]>()
+    useEffect(()=>{
+      async function getNews(){
+       await GetAllFn("/news").then(res => setNewsList(res))
+      } 
+      getNews()
+    },[])
     
     
   return (
@@ -37,11 +26,11 @@ const News = ({newsElements} : {newsElements : newsListType[]}) => {
         <div className="containers flex flex-col gap-17">
           <h2 className="text-5xl font-bold text-center">{t("title")}</h2>
           <ul className="flex items-center justify-center gap-25 mt-29">
-            {newsElements.slice(0,3).map(item =><li key={item.id} className="bg-white/40 rounded-[30px] pb-4 flex flex-col items-start gap-3 pl-6 pr-2">
-             <Image src={`https://anorkhulov.uz/${item.image}`}  alt="news-image" width={213} height={157} className="w-auto h-auto -mt-20 rounded-[30px]"/>
+            {newsList?.slice(0,3).map(item =><li key={item.id} className="bg-white/40 rounded-[30px] pb-4 flex flex-col items-start gap-3 pl-6 pr-2">
+             <Image src={`https://anorkhulov.uz/${item.image}`}  alt="news-image" width={213} height={157} style={{ width: 'auto', height: 'auto' }} className=" -mt-20 rounded-[30px]"/>
              <p className="mt-3 max-w-[327px]">{item.description}</p>
              <div className="flex items-center gap-3">
-             <Image src={`https://anorkhulov.uz/${item.author.avatar}`} alt="news-user-avatar" width={45} height={45} className="w-auto h-auto"/>
+             <Image src={`https://anorkhulov.uz/${item.author.avatar}`} alt="news-user-avatar" width={45} height={45} style={{ width: 'auto', height: 'auto' }}/>
                <h2 className="text-lg font-semibold">{item.author.firstName}{item.author.lastName}</h2>
              </div>
             </li>)}
@@ -55,4 +44,4 @@ const News = ({newsElements} : {newsElements : newsListType[]}) => {
   )
 }
 
-export default News
+export default NewsPage

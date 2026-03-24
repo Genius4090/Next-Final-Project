@@ -1,15 +1,17 @@
 "use client"
-import { CategoryType, NewsType, ProductType } from "@/@types"
+import { CategoryType, ProductType } from "@/@types"
 import FoodCard from "@/components/FoodCard"
 import WrapperBox from "@/components/WrapperBox"
 import instance from "@/hooks/instance"
-import { Navbar, News } from "@/modules"
+import { Navbar } from "@/modules"
+import NewsPage from "@/modules/News"
+
 import { useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
 
 
 
-const MenuContent = ({newsElements,products,categories}: {newsElements :NewsType[],products : ProductType[],categories: CategoryType[]}) => {
+const MenuContent = ({products,categories}: {products : ProductType[],categories: CategoryType[]}) => {
   const t = useTranslations("MenuPage")
 
   const [filteredProducts,setFilteredProducts] = useState<ProductType[]>(products)
@@ -21,7 +23,7 @@ const MenuContent = ({newsElements,products,categories}: {newsElements :NewsType
   
   return (
     <section className="py-21 relative">
-      {/* <Image src={"/images/wrapper-bg.png"} alt="wrapper-bg" width={1300} height={1500} className="w-full h-auto absolute"/> */}
+     
       <WrapperBox>
         <Navbar/>
       <div className="menu-box flex flex-col items-center mt-40 ">
@@ -35,7 +37,7 @@ const MenuContent = ({newsElements,products,categories}: {newsElements :NewsType
        </ul>
       </div>
       </WrapperBox>
-      <News newsElements={newsElements}/>
+      <NewsPage/>
     </section>
   )
 }

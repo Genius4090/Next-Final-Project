@@ -1,6 +1,8 @@
+
 import { ProductType } from "@/@types"
 import { Button } from "@/components/ui/button"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import { Link } from "@/i18n/navigation"
 import { ArrowRightIcon, CartLightIcon, HeartIcon } from "@/public/icons"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
@@ -18,10 +20,12 @@ const Popular = ({popularProducts} : {popularProducts : ProductType[]}) => {
       <h2 className="font-bold text-5xl text-center">{t("PopularPage.title")}</h2>
         <Carousel className="py-15">
   <CarouselContent className="py-15">
-    {popularProducts?.splice(0,6).map(item => 
+    {popularProducts?.slice(0,6).map(item => 
 <CarouselItem key={item.id}  className="basis-1/4 flex items-center justify-center">
 <div className="w-[263px] relative min-h-[310px] bg-white/40 rounded-[38px] flex flex-col items-center">
-      <Image src={`https://anorkhulov.uz/${item.image}`} alt="card-image" width={243} height={253} className="w-auto h-auto -mt-20"/>
+<Link href={`/menu/${item.id}`}>
+<Image src={`https://anorkhulov.uz/${item.image}`} alt="card-image" width={243} height={253} className="-mt-20" style={{ width: 'auto', height: 'auto' }}/>
+</Link>
       <div className=" w-full px-5  h-full flex flex-col justify-between pb-4">
        <div>
        <div className="w-full flex justify-between items-center ">

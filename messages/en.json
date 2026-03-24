@@ -89,7 +89,7 @@
     "OrderPage": {
       "title": "Booking",
       "heroTitle": "Book a table",
-      "inp1": "Phone number",
+      "inp1": "Email",
       "inp2": "How many people",
       "inp3": "Select date",
       "inp4": "Select time",

@@ -1,4 +1,4 @@
-import { ProductType } from "@/@types"
+import { ContactType, ProductType } from "@/@types"
 import instance from "@/hooks/instance"
 interface RegisterType {
     firstName: string
@@ -45,6 +45,10 @@ export const RegisterFn = async (data: RegisterType) => {
     }
   }
 
+  export const GetById = async (id:number) => {
+    const res = await instance().get(`/products/${id}`)
+    return res
+  }
 
   export const GetCart = async (id:any) => {
     const res = await instance().get("/cart/current",{
@@ -56,6 +60,31 @@ export const RegisterFn = async (data: RegisterType) => {
   }
 
 
-  export const addCart = async (data:any) => {
-    const res = await instance().post("/cart/items",data)
-  }
+  export const addCart = async (userId:number,productId:number) => {
+    const res = await instance().post(`/cart/items`,
+      {
+        productId: productId,
+        userId: userId,
+        quantity: 1
+      }
+    )
+    return res
+}
+
+
+export const DeleteCart = async (itemId:number) => {
+  const res = await instance().delete(`/cart/items/${itemId}`)
+  return res
+}
+
+
+export const AddReservation = async (data:any) => {
+  const res = await instance().post("/reservations/create",data)
+  return res
+}
+
+
+
+export const SendContact = async (data:ContactType) => {
+ const res = await instance().post("/contact",data)
+}

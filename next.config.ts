@@ -2,9 +2,15 @@ import { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 
 const nextConfig: NextConfig = {
-    images: {
-        domains: ["anorkhulov.uz"], // allow your backend images
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "anorkhulov.uz",
+        pathname: "/**",
       },
+    ],
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();

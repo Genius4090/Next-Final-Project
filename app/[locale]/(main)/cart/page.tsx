@@ -1,13 +1,21 @@
-import CartContent from "./cartContent"
-import { GetCart } from "@/services"
+import { cookies } from "next/headers";
+import CartContent from "./cartContent";
+import { GetCart } from "@/services";
+import { redirect } from "next/navigation";
 
 const CartPage = async () => {
-   
+  const cookieStore = await cookies();
+  const userId = cookieStore.get("userId")?.value;
   
-  const cartList = await GetCart(1) 
-  console.log(cartList.data);
-  
-  return <CartContent cartList={cartList.data.items}/>
-}
+  if(!userId){
+  redirect("/")
+  }
 
-export default CartPage
+  const cartList = await GetCart(userId);
+ 
+  
+  
+  return userId ? <CartContent cartList={cartList.data.items} /> : "";
+};
+
+export default CartPage;

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import WrapperBox from "@/components/WrapperBox"
 import { Navbar, News } from "@/modules"
+import NewsPage from "@/modules/News"
 import Team from "@/modules/Team"
 import { ArrowRightIcon } from "@/public/icons"
 import { GetAllFn } from "@/services"
@@ -8,7 +9,6 @@ import Image from "next/image"
 
 const AboutPage =  async () => {
 //  const teams = await GetAllFn("/team")
-const news = await GetAllFn("/news")
 
 
 
@@ -36,13 +36,13 @@ const news = await GetAllFn("/news")
     <Button className="cursor-pointer py-6! px-5! rounded-br-none ">Посмотреть меню<ArrowRightIcon/></Button>
 
   </div>
-  <Image src={"/images/aboutImg1.png"} alt="about-img1" width={503} height={676} className="w-auto h-auto"/>
+  <Image src={"/images/aboutImg1.png"} alt="about-img1" width={503} height={676} style={{ width: 'auto', height: 'auto' }}/>
 </div>
 
 
  
   <div className="flex justify-between my-26 ">
-   <Image src={"/images/aboutImg2.png"} alt="about-img2" width={503} height={676} className="w-auto h-auto"/>
+   <Image src={"/images/aboutImg2.png"} alt="about-img2" width={503} height={676} style={{ width: 'auto', height: 'auto' }}/>
     <div  className="w-[564px] flex flex-col gap-10 items-start py-5">
     <h4 className=" font-bold text-[40px] ">Наш путь</h4>
     <p  className="text-xl tracking-tight">С самого начала мы взяли на себя обязательство предлагать свежие продукты, свежие ингредиенты и новый взгляд на заботу о наших гостях, членах нашей команды и наших сообществах. Мы искренне верим, что нет ничего, что могло бы объединить людей или сделать мир лучше, чем тарелка лапши.</p>
@@ -56,7 +56,7 @@ const news = await GetAllFn("/news")
 </div>
 
       </WrapperBox>
-      <News newsElements={news}/>
+      <NewsPage/>
     </div>
   )
 }

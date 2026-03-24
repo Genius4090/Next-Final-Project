@@ -12,14 +12,14 @@ const Hero = () => {
   return (
     <section className="py-21">
       <WrapperBox >
-      <Image src={"/images/hero-bg.png"} alt="hero-bg" width={1481} height={742} loading="eager" className="absolute border -left-18 top-32 "/>
+      <Image loading="eager" src={"/images/hero-bg.png"}  alt="hero-bg" width={1481} height={742} style={{ width: 'auto', height: 'auto' }}  className="absolute border -left-18 top-32 "/>
       <Navbar/>
       <div className="flex items-center justify-start gap-40 py-15 px-[68px]">
         <div className="w-[332px] flex flex-col gap-4 items-start z-2">
           <h2 className="text-6xl tracking-wide font-black leading-23 uppercase">{t("HeroPage.title")}</h2>
           <Button className="cursor-pointer py-6! px-5! rounded-br-none ">{t("HeroPage.btn")}<ArrowRightIcon/></Button>
         </div>
-         <Image className="w-auto h-auto" src={"/images/hero-img.png"} alt="hero-img" width={613} height={609}/>
+         <Image  src={"/images/hero-img.png"} alt="hero-img" width={613} height={609} style={{ width: 'auto', height: 'auto' }}/>
       </div>
       </WrapperBox>
      

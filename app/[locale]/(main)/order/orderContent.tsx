@@ -1,15 +1,56 @@
-import { NewsType } from "@/@types"
-import { DatePickerInput } from "@/components/datePicker"
+"use client"
+import { TableType } from "@/@types"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { InputGroup, InputGroupInput } from "@/components/ui/input-group"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import WrapperBox from "@/components/WrapperBox"
-import { Contact, Navbar, News } from "@/modules"
+import { Contact, Navbar } from "@/modules"
+import NewsPage from "@/modules/News"
+import { AddReservation, GetAllFn } from "@/services"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
+import { SubmitEvent, useEffect, useState } from "react"
+import { toast } from "sonner"
 
-const OrderContent = ({newsElements}:{newsElements:NewsType[]}) => {
+const OrderContent = () => {
+  const [tableList,setTableList] = useState<TableType[]>([])
+  
+  
+  const handleSubmit = async (e:SubmitEvent<HTMLFormElement>) => {
+   const form = e.currentTarget;
+  e.preventDefault()
+  const data = {
+    customerName: e.target.customerName.value,
+      email : e.target.email.value,
+      guestCount: Number(e.target.guestCount.value),
+      reservationDate: e.target.reservationDate.value,
+      reservationTime: e.target.reservationTime.value,
+      tableId:Number(e.target.tableId.value)
+
+  }
+  
+  await AddReservation(data).then(res => toast.success("sucessfully sent your reservation",{position: "top-center"}))
+  form.reset()
+  
+  
+  
+
+  }
+
+  useEffect(()=>{
+    const getTables = async () => {
+      await GetAllFn("/restaurant-tables").then(res => setTableList(res)
+      )
+    }
+    getTables()
+   },[])
+
+
+
+
+
+
   const t = useTranslations("OrderPage")
   const scheduleList:{id:number,day:string,start:string,end:string}[] = [
     {
@@ -65,17 +106,18 @@ const OrderContent = ({newsElements}:{newsElements:NewsType[]}) => {
          </ul>
           </div>
         
-         <Image src={"/images/order-img.png"} alt="order-image" width={503} height={676}/>
+         <Image src={"/images/order-img.png"} alt="order-image" width={503} height={676} style={{ width: 'auto', height: 'auto' }}/>
          </div>
         </div>
-<form className="w-full flex justify-center  rounded-[31px]">
+<form onSubmit={handleSubmit} className="w-full flex justify-center  rounded-[31px]">
        <div className="flex w-[902px] flex-col items-center  gap-10  py-10 px-13 relative pt-20 z-2">
        
         <h2 className="text-5xl font-extrabold">{t("orderBox.title")}</h2>
 
-        <Input  placeholder={t("inp1")} className=" border-transparent border-b-black rounded-none px-0 py-5 text-base!"/>
+        <Input name="customerName" placeholder="Ваша имя" className="border-transparent border-b-black rounded-none text-base! px-0 pb-2"/>
+        <Input name="email"  placeholder={t("inp1")} className=" border-transparent border-b-black rounded-none px-0 py-5 text-base!"/>
 
-        <Select>
+        <Select name="guestCount">
   <SelectTrigger className="w-full border-transparent border-b-black rounded-none px-0 py-5  text-base!">
     <SelectValue placeholder={t("inp2")} />
   </SelectTrigger>
@@ -95,11 +137,11 @@ const OrderContent = ({newsElements}:{newsElements:NewsType[]}) => {
 </Select>
 
   {/* The actual time input */}
-  <DatePickerInput />
+  <Input type="date" name="reservationDate" className="border-transparent border-b-black rounded-none px-0 pb-2 text-base!"/>
 <InputGroup>
       {/* The actual time input */}
       <InputGroupInput
-     
+        name="reservationTime"
         type="time"
         className="border-b text-base! border-black"
       />
@@ -108,7 +150,7 @@ const OrderContent = ({newsElements}:{newsElements:NewsType[]}) => {
     
        
 <div className="w-full">
-<Select>
+<Select name="tableId">
   <SelectTrigger className="w-full border-transparent border-b-black rounded-none px-0 pb-6 text-base! ">
     <SelectValue placeholder= {t("inp5")} />
   </SelectTrigger>
@@ -120,14 +162,11 @@ const OrderContent = ({newsElements}:{newsElements:NewsType[]}) => {
       </SelectItem>
 
       {/* Actual selectable items */}
-      <SelectItem value="1">Ташкент</SelectItem>
-      <SelectItem value="2">Андижан</SelectItem>
-      <SelectItem value="3">Фергана</SelectItem>
+      {tableList.map(item =>  <SelectItem key={item.id} value={`${item.id}`}>{item.location}</SelectItem>)}
     </SelectGroup>
   </SelectContent>
 
 </Select>
-<h2 className="text-[#06004C] text-sm mt-3 cursor-pointer"> {t("link")}</h2>
 </div>
 <div className="w-full flex justify-end">
 <Button className="cursor-pointer py-6! px-9! "> {t("btn")} </Button>
@@ -136,7 +175,7 @@ const OrderContent = ({newsElements}:{newsElements:NewsType[]}) => {
       </form>
       <Contact/>
       </WrapperBox>
-      <News newsElements={newsElements}/>
+     <NewsPage/>
     </section>
   )
 }

@@ -1,9 +1,10 @@
-import { Hero, News, Order, Popular, WhyPage } from "@/modules";
+import { Hero, Order, Popular, WhyPage } from "@/modules";
+import NewsPage from "@/modules/News";
 import { GetAllFn } from "@/services";
 
 const Home = async () => {
   const popularProducts = await GetAllFn("/products")
-  const newsElements = await GetAllFn("/news")
+
 
   
   return (
@@ -12,7 +13,7 @@ const Home = async () => {
      <Popular popularProducts={popularProducts}/>
      <Order/>
      <WhyPage/>
-     <News newsElements={newsElements}/>
+     <NewsPage/>
    </div>
   );
 }

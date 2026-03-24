@@ -90,3 +90,21 @@ export interface ProductType {
     isAvailable: boolean
   }
   
+
+  export interface TableType {
+    id: string
+    isActive: boolean
+    createdAt: string
+    updatedAt: string
+    tableNumber: number
+    capacity: number
+    location: string
+    status: string
+  }
+
+
+  export interface ContactType {
+    name:string,
+    email:string,
+    message:string
+  }

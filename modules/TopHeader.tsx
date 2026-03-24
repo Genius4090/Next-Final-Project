@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/popover"
 import { useEffect, useState } from "react"
 import { deleteCookie, getCookie } from "cookies-next"
+import { ArrowBigLeft } from "lucide-react"
 
 const TopHeader = () => {
 
@@ -54,19 +55,18 @@ useEffect(() => {
   }, [])
 
 
-  // logout 
-
   function handleLogOut(){
     deleteCookie("token")
     deleteCookie("userInfo")
     deleteCookie("userId")
     setUser(null)
-    router.refresh()
   }
   return (
     <section className={`py-3 fixed w-full z-40 ${scrolled ? "backdrop-blur-md" : "bg-transparent"}`}>
    <div className="containers flex items-center justify-between">
  <div className="flex gap-[27px]">
+ <button onClick={()=> router.back()} className="flex items-center gap-[11px] cursor-pointer"><ArrowBigLeft/></button>
+
     <span className="flex items-center gap-[11px]"><PhoneIcon/> <p>info@bmgsoft.com</p></span>
     <span className="flex items-center gap-[11px]"><MailIcon/><p>+998(90)758383833</p></span>
  </div>
