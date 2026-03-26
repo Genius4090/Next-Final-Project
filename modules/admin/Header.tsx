@@ -8,7 +8,7 @@ const Header = () => {
   const router = useRouter()
   const pathList = [
     { id: 1, label: "Home", path: "/admin" },
-    { id: 2, label: "Users", path: "/admin/users" },
+    { id: 2, label: "Customers", path: "/admin/customers" },
     { id: 3, label: "Menu", path: "/admin/menu" },
     { id: 4, label: "Categories", path: "/admin/category" },
     { id: 5, label: "News", path: "/admin/news" },

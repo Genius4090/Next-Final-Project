@@ -17,8 +17,8 @@ export default async function AdminLayout({children,}:{children: React.ReactNode
     <>
       <TopHeader />
       <main className="min-h-screen">
-      <section className="py-21    w-full min-h-screen containers ">
-    <div className="flex bg-white/40  rounded-xl p-2">
+      <section className="py-21 w-full containers ">
+    <div className="flex bg-white  rounded-xl p-2">
 
    <div className="flex flex-col justify-between w-[20%] h-full py-0.5    border-r">
   <div className="w-full h-[71px] flex items-center  border-b px-2">
