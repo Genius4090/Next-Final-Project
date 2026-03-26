@@ -41,7 +41,7 @@ const Sidebar = () => {
         },
     ]
   return (
-    <div className="w-full  h-screen  py-6 pr-3">
+    <div className="w-full py-6 pr-3">
       
         <ul className="flex flex-col items-start gap-4 px-1">
             {sidebarList.map(item => <Link className={`duration-300 p-1 py-2 px-2 rounded w-full ${path === item.href ? "bg-black text-white" : ""}`} key={item.id} href={item.href}>{item.content}</Link>)}

@@ -59,6 +59,7 @@ useEffect(() => {
     deleteCookie("token")
     deleteCookie("userInfo")
     deleteCookie("userId")
+    deleteCookie("userRole")
     setUser(null)
   }
   return (

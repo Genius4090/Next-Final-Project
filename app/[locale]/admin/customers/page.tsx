@@ -2,10 +2,10 @@ import { GetAllFn } from "@/services"
 import { columns } from "./column"
 import { DataTable } from "./data-table"
 
-const page = async () => {
+const CustomersPage = async () => {
 
   const customers = await GetAllFn("/customer")
-  console.log(customers);
+
   
 
   return (
@@ -15,6 +15,6 @@ const page = async () => {
   )
 }
 
-export default page
+export default CustomersPage
 
 

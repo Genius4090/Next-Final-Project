@@ -18,12 +18,12 @@ import {
   ChartContainer,
   type ChartConfig,
 } from "@/components/ui/chart"
+import { useEffect, useState } from "react"
+import { GetAllFn } from "@/services"
 
 export const description = "A radial chart with text"
 
-const chartData = [
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-]
+
 
 const chartConfig = {
   visitors: {
@@ -35,7 +35,25 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
+
+
+
+
 export function PieChartComponent() {
+  const [userCount,setUserCount] = useState<number>(0)
+
+  const chartData = [
+    { browser: "safari", visitors: userCount, fill: "var(--color-safari)" },
+  ]
+
+  useEffect(()=>{
+    async function getUserCount() {
+     const res = await GetAllFn("/customer")
+     setUserCount(res.length)
+    }
+    getUserCount()
+  },[])
+
   return (
     <Card className="flex flex-col w-[50%]">
     
@@ -82,7 +100,7 @@ export function PieChartComponent() {
                           y={(viewBox.cy || 0) + 24}
                           className="fill-muted-foreground"
                         >
-                          Visitors
+                          Registered Customers
                         </tspan>
                       </text>
                     )

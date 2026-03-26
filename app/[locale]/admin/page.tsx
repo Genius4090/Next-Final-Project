@@ -3,7 +3,9 @@ import { PieChartComponent } from "@/components/pieChart"
 import { Button } from "@/components/ui/button"
 import { ArrowRightIcon } from "@/public/icons"
 
+
 const page = () => {
+  
   return (
  <section className="flex flex-col py-15 items-center   gap-15 justify-around">
 <div className="flex flex-col items-center justify-center">

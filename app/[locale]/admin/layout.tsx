@@ -16,13 +16,13 @@ export default async function AdminLayout({children,}:{children: React.ReactNode
   return (
     <>
       <TopHeader />
-      <main className="min-h-screen">
-      <section className="py-21 w-full containers ">
-    <div className="flex bg-white  rounded-xl p-2">
+      <main className="">
+      <section className="py-21 w-full h-full containers ">
+    <div className="flex bg-white h-full rounded-xl p-2">
 
-   <div className="flex flex-col justify-between w-[20%] h-full py-0.5    border-r">
-  <div className="w-full h-[71px] flex items-center  border-b px-2">
-   <Link href={"/admin"}><Image style={{ width: 'auto', height: 'auto' }} src={"/images/websiteLogo.svg"} alt="website-logo" width={136} height={71}/></Link>
+   <div className="flex flex-col  w-[20%] py-0.5   border-r">
+  <div className="w-full  py-[17px] flex items-center  border-b px-2">
+   <Link href={"/admin"}><Image style={{ width: 'auto', height: 'auto' }} loading="eager" src={"/images/websiteLogo.svg"} alt="website-logo" width={136} height={71}/></Link>
 
   </div>
    <Sidebar/>
@@ -30,7 +30,7 @@ export default async function AdminLayout({children,}:{children: React.ReactNode
 
     <div className="flex flex-col w-full">
     <Header/>
-    <div className="h-full ">
+    <div className="h-[750px]">
     {children}
     </div>
     </div>

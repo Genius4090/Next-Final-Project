@@ -42,7 +42,7 @@ export function DataTable<TData>({
   const [columnVisibility, setColumnVisibility] = React.useState({})
   const [rowSelection, setRowSelection] = React.useState({})
   const [globalFilter, setGlobalFilter] = React.useState("")
-
+   
   const table = useReactTable({
     data,
     columns,
@@ -94,7 +94,7 @@ export function DataTable<TData>({
       </div>
 
       {/* TABLE */}
-      <div className="rounded border border-gray-300">
+      <div className=" rounded border border-gray-300">
         <Table >
           <TableHeader className="bg-[#F4F4F5]">
             {table.getHeaderGroups().map((headerGroup) => (

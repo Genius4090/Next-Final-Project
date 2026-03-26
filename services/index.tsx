@@ -93,5 +93,33 @@ export const AddReservation = async (data:any) => {
 
 
 export const SendContact = async (data:ContactType) => {
- const res = await instance().post("/contact",data)
+ await instance().post("/contact",data)
 }
+
+
+
+export const getReservations = async (token:string | undefined,userId: number) => {
+  try{
+  const res =  await instance(token).get("/reservations", {
+      params: {userId:userId}
+      });
+  return res.data.data
+  }catch(err){
+    console.log(err);
+    
+  } 
+};
+
+
+
+export const getContact = async (token:string | undefined,userId: number) => {
+  try{
+  const res =  await instance(token).get("/contact", {
+      params: {userId:userId}
+      });
+  return res.data.data
+  }catch(err){
+    console.log(err);
+    
+  } // ✅ 
+};
