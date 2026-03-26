@@ -8,6 +8,9 @@ const CartContent = ({ cartList }: { cartList: CartItem[] }) => {
 
   return (
     <div className="py-21 containers max-h-[800px] flex px-20 gap-4">
+
+    {/* Cart List  | left side  */}
+
       <div className="w-[72%]  overflow-y-scroll  h-[800px]  bg-white flex rounded flex-col p-5">
         <div className="pb-4">
           <h2 className="font-bold text-2xl ">Your Cart</h2>
@@ -22,6 +25,7 @@ const CartContent = ({ cartList }: { cartList: CartItem[] }) => {
         </ul>
       </div>
 
+   {/* Summary | right side  */}
       <div className="bg-white w-[28%]  rounded px-4 py-4 flex flex-col justify-start">
         <h2 className="font-semibold text-xl">Summary</h2>
 

@@ -14,7 +14,9 @@ const CartFood = ({item}:{item:CartItem}) => {
     async function handleDelete(id:number){
       await DeleteCart(id).then(res => {
         toast.success("item deleted successfully",{ position: "top-center" })
-        router.refresh()
+        // router.refresh()
+
+        //revalidate 
       })
     }
 

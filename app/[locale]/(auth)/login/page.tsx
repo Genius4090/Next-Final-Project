@@ -25,12 +25,19 @@ const LoginPage = () => {
   if(data){
     setCookie("token", data.data.accessToken);
     setCookie("userId", data.data.user.id);
+    setCookie("userRole", data.data.user.role);
+
     setCookie("userInfo", JSON.stringify({
       username: `${data.data.user.firstName} ${data.data.user.lastName}`,
     }))
     toast.success("Successfully logged in", { position: "top-center" })
+   
     setTimeout(()=>{
-      router.push("/menu")
+      if(data.data.user.role == "ADMIN"){
+        router.push("/admin")
+      }else{
+        router.push("/menu")
+      }
     },1000)
   }else {
    toast.error(`error occured`,{ position: "top-center" })

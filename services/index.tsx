@@ -1,5 +1,7 @@
+"use server"
 import { ContactType, ProductType } from "@/@types"
 import instance from "@/hooks/instance"
+import { revalidatePath } from "next/cache"
 interface RegisterType {
     firstName: string
     lastName: string
@@ -74,7 +76,12 @@ export const RegisterFn = async (data: RegisterType) => {
 
 export const DeleteCart = async (itemId:number) => {
   const res = await instance().delete(`/cart/items/${itemId}`)
+  revalidatePath("/cart");
   return res
+  // const res = await fetch(`https://anorkhulov.uz/api/cart/items/${itemId}`, {
+  // method:"DELETE"})
+  // revalidatePath("/cart");
+  // return res
 }
 
 
