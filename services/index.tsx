@@ -43,13 +43,17 @@ export const RegisterFn = async (data: RegisterType) => {
       const res = await instance().get(URL)
       return res.data.data
     } catch (err) {
-      console.error("Login failed:", err);
+      console.error("Failed to fetch data:", err);
     }
   }
 
   export const GetById = async (id:number) => {
-    const res = await instance().get(`/products/${id}`)
-    return res
+    try{
+      const res = await instance().get(`/products/${id}`)
+    return res.data.data
+    }catch(err){
+      console.log(err);
+    }
   }
 
   export const GetCart = async (id:any) => {
@@ -123,3 +127,22 @@ export const getContact = async (token:string | undefined,userId: number) => {
     
   } // ✅ 
 };
+
+
+
+
+
+export const addProduct = async (data:any,token:any) => {
+  const res = await instance(token).post(`/products`,data).then(res => {
+    revalidatePath("/admin/menu")
+    
+    })
+    return res
+}
+
+
+
+export const updateProduct = async (data:any,token:any,id:number) => {
+  const res = await instance(token).patch(`/products/${id}`,data)
+  return res.data
+}

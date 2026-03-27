@@ -22,7 +22,7 @@ async function handleAddCart(id:number,){
   return (
     <div className="w-[263px] relative min-h-[310px] bg-white/40 rounded-[38px] flex flex-col items-center">
 <Link href={`/menu/${item.id}`}>
-<Image src={`https://anorkhulov.uz/${item.image}`} alt="card-image" width={243} height={253} style={{ width: 'auto', height: 'auto' }} className="-mt-20"/>
+<Image src={ item.image ? `https://anorkhulov.uz/${item.image}` : "/images/popular-img.png"} alt="card-image" width={243} height={253} style={{ width: 'auto', height: 'auto' }} className="-mt-20"/>
 
 </Link>
       <div className=" w-full px-5  h-full flex flex-col justify-between pb-4">

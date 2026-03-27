@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Link, usePathname, useRouter } from "@/i18n/navigation"
 import { CartIcon } from "@/public/icons"
 import { GetCart } from "@/services"
-import { getCookie, setCookie } from "cookies-next"
+import { getCookie } from "cookies-next"
 import { ScrollText } from "lucide-react"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
@@ -11,32 +11,21 @@ import { useEffect, useState } from "react"
 
 const Navbar = () => {
   const router = useRouter()
-  const user = getCookie("userInfo")
   const token = getCookie("token")
-  // const cartCookieCount = getCookie("cartCount")
+  const userId = getCookie("userId")
   const [cartCount,setCartCount] = useState(0)
-  const [userId, setUserId] = useState<number | null>(() => {
-    if (!user) return null
-    try {
-      return JSON.parse(user as string).id
-    } catch {
-      return null
-    }
-  })
-   
-   
-   useEffect(()=>{
+
+  useEffect(() => {
+    if (!userId) return
     const fetchCart = async () => {
-     if(userId){
-      const data = await GetCart(userId)
-      setCartCount(data.data.itemCount)
-      setCookie("cart",JSON.stringify(data.data))
-     }
+      const cartList = await GetCart(userId)
+      setCartCount(cartList.data.itemCount)
     }
     fetchCart()
-  },[])
+  }, [userId])
+ 
 
-  const pathname = usePathname()
+const pathname = usePathname()
   const t = useTranslations()
   return (
     <div className="flex items-center justify-between py-10 px-[68px]">

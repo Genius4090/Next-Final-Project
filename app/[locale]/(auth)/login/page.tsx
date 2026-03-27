@@ -26,6 +26,7 @@ const LoginPage = () => {
     setCookie("token", data.data.accessToken);
     setCookie("userId", data.data.user.id);
     setCookie("userRole", data.data.user.role);
+    
 
     setCookie("userInfo", JSON.stringify({
       username: `${data.data.user.firstName} ${data.data.user.lastName}`,

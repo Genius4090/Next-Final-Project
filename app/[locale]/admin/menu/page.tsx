@@ -1,7 +1,17 @@
-const page = () => {
+import { columns } from "./column"
+import { DataTable } from "./data-table"
+import { GetAllFn } from "@/services";
+
+const MenuPage = async () => {
+const products = await GetAllFn("/products")
   return (
-    <div>page</div>
+    <div className="p-10">
+        
+        <DataTable columns={columns} data={products} />
+  </div>
   )
 }
 
-export default page
+export default MenuPage
+
+

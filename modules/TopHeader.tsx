@@ -24,7 +24,7 @@ const TopHeader = () => {
   const router = useRouter()
   const t = useTranslations()
   const [scrolled, setScrolled] = useState<boolean>(false)
- 
+  const userRole = getCookie("userRole")
 useEffect(() => {
   const value = getCookie("userInfo");
   if (value) {
@@ -103,17 +103,21 @@ useEffect(() => {
             </PopoverContent>
   </Popover>
            
-             {user ? <Popover>
+           <div className="flex items-center gap-4">
+           {user ? <Popover>
             <PopoverTrigger asChild>
             <Button className="py-3! px-3.5! text-sm cursor-pointer"><SignInIcon/>{user?.username}</Button>
+        
             </PopoverTrigger>
-
+            
             <PopoverContent className="w-[160px] p-2">
             <Button onClick={()=> handleLogOut()} className="py-3! px-3.5! text-sm cursor-pointer bg-red-500"><LogOutIcon/>{t("Topbar.exit")}</Button>
+           {userRole &&  <Button onClick={()=> router.push("/admin")} className="py-3! px-3.5! text-sm cursor-pointer">Admin Page</Button>}
             </PopoverContent>
           </Popover> :  
           <Button className="py-3! px-3.5! text-sm cursor-pointer"><SignInIcon/><Link href={"/login"}>{t("Topbar.title")}</Link></Button>}
-           
+
+             </div>
    
  </div>
    </div>

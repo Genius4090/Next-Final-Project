@@ -12,6 +12,7 @@ const CartPage = async () => {
   }
 
   const cartList = await GetCart(userId);
+ console.log(cartList);
  
   
   

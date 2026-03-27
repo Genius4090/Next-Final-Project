@@ -78,7 +78,7 @@ export function PieChartComponent() {
             />
             <RadialBar dataKey="visitors" background cornerRadius={10} />
             <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
-              <Label
+              <Label 
                 content={({ viewBox }) => {
                   if (viewBox && "cx" in viewBox && "cy" in viewBox) {
                     return (
@@ -98,7 +98,7 @@ export function PieChartComponent() {
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 24}
-                          className="fill-muted-foreground"
+                          className="fill-muted-foreground "
                         >
                           Registered Customers
                         </tspan>

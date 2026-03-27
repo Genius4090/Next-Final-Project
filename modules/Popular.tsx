@@ -12,6 +12,7 @@ import Image from "next/image"
 
 
 const Popular = ({popularProducts} : {popularProducts : ProductType[]}) => {
+ 
   
   const t = useTranslations()
   return (
@@ -24,7 +25,7 @@ const Popular = ({popularProducts} : {popularProducts : ProductType[]}) => {
 <CarouselItem key={item.id}  className="basis-1/4 flex items-center justify-center">
 <div className="w-[263px] relative min-h-[310px] bg-white/40 rounded-[38px] flex flex-col items-center">
 <Link href={`/menu/${item.id}`}>
-<Image src={`https://anorkhulov.uz/${item.image}`} alt="card-image" width={243} height={253} className="-mt-20" style={{ width: 'auto', height: 'auto' }}/>
+<Image src={ item.image ? `https://anorkhulov.uz/${item.image}` : "/images/popular-img.png"} alt="card-image" width={243} height={253} className="-mt-18" style={{ width: 'auto', height: 'auto' }}/>
 </Link>
       <div className=" w-full px-5  h-full flex flex-col justify-between pb-4">
        <div>
